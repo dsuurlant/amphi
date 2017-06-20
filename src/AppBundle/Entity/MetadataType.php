@@ -28,6 +28,12 @@ class MetadataType
      */
     private $name;
 
+    /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Metadata", mappedBy="metadataType")
+     */
+    private $metadatas;
 
     /**
      * Get id
@@ -62,5 +68,27 @@ class MetadataType
     {
         return $this->name;
     }
+
+    /**
+     * @return array
+     */
+    public function getMetadatas(): array
+    {
+        return $this->metadatas;
+    }
+
+    /**
+     * @param array $metadatas
+     *
+     * @return MetadataType
+     */
+    public function setMetadatas(array $metadatas): MetadataType
+    {
+        $this->metadatas = $metadatas;
+
+        return $this;
+    }
+
+
 }
 

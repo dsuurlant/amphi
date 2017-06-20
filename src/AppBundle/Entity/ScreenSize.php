@@ -31,9 +31,9 @@ class ScreenSize
     /**
      * @var string
      *
-     * @ORM\Column(name="heightCentimeters", type="decimal", precision=5, scale=1, nullable=true)
+     * @ORM\Column(name="heightInCm", type="decimal", precision=5, scale=1, nullable=true)
      */
-    private $heightCentimeters;
+    private $heightInCm;
 
     /**
      * @var string
@@ -48,6 +48,13 @@ class ScreenSize
      * @ORM\Column(name="aspectRatio", type="string", length=10, nullable=true)
      */
     private $aspectRatio;
+
+    /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Theater", mappedBy="screenSize")
+     */
+    private $theaters;
 
 
     /**
@@ -85,27 +92,27 @@ class ScreenSize
     }
 
     /**
-     * Set heightCentimeters
+     * Set heightInCm
      *
-     * @param string $heightCentimeters
+     * @param string $heightInCm
      *
      * @return ScreenSize
      */
-    public function setHeightCentimeters($heightCentimeters)
+    public function setHeightInCm($heightInCm)
     {
-        $this->heightCentimeters = $heightCentimeters;
+        $this->heightInCm = $heightInCm;
 
         return $this;
     }
 
     /**
-     * Get heightCentimeters
+     * Get heightInCm
      *
      * @return string
      */
-    public function getHeightCentimeters()
+    public function getHeightInCm()
     {
-        return $this->heightCentimeters;
+        return $this->heightInCm;
     }
 
     /**
@@ -155,5 +162,27 @@ class ScreenSize
     {
         return $this->aspectRatio;
     }
+
+    /**
+     * @return array
+     */
+    public function getTheaters(): array
+    {
+        return $this->theaters;
+    }
+
+    /**
+     * @param array $theaters
+     *
+     * @return ScreenSize
+     */
+    public function setTheaters(array $theaters): ScreenSize
+    {
+        $this->theaters = $theaters;
+
+        return $this;
+    }
+    
+
 }
 

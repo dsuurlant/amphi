@@ -22,16 +22,16 @@ class Seat
     private $id;
 
     /**
-     * @var int
+     * @var Theater
      *
-     * @ORM\Column(name="screen", type="integer")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Theater", inversedBy="seats")
      */
-    private $screen;
+    private $theater;
 
     /**
-     * @var int
+     * @var SeatType
      *
-     * @ORM\Column(name="seatType", type="integer")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\SeatType", inversedBy="seats")
      */
     private $seatType;
 
@@ -61,33 +61,33 @@ class Seat
     }
 
     /**
-     * Set screen
+     * Set theater
      *
-     * @param integer $screen
+     * @param integer $theater
      *
      * @return Seat
      */
-    public function setScreen($screen)
+    public function setTheater($theater)
     {
-        $this->screen = $screen;
+        $this->theater = $theater;
 
         return $this;
     }
 
     /**
-     * Get screen
+     * Get theater
      *
-     * @return int
+     * @return Theater
      */
-    public function getScreen()
+    public function getTheater()
     {
-        return $this->screen;
+        return $this->theater;
     }
 
     /**
      * Set seatType
      *
-     * @param integer $seatType
+     * @param SeatType $seatType
      *
      * @return Seat
      */
@@ -101,7 +101,7 @@ class Seat
     /**
      * Get seatType
      *
-     * @return int
+     * @return SeatType
      */
     public function getSeatType()
     {

@@ -10,84 +10,144 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="theater")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TheaterRepository")
  */
-class Theater {
-	/**
-	 * @var int
-	 *
-	 * @ORM\Column(name="id", type="integer")
-	 * @ORM\Id
-	 * @ORM\GeneratedValue(strategy="AUTO")
-	 */
-	private $id;
+class Theater
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
 
-	/**
-	 * @var int
-	 *
-	 * @ORM\Column(name="theaterType", type="integer")
-	 */
-	private $theaterType;
+    /**
+     * @var TheaterType
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TheaterType", inversedBy="theaters")
+     */
+    private $theaterType;
 
-	/**
-	 * @var int
-	 *
-	 * @ORM\Column(name="location", type="integer")
-	 */
-	private $location;
+    /**
+     * @var Location
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Location", inversedBy="theaters")
+     */
+    private $location;
+
+    /**
+     * @var ScreenSize
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ScreenSize", inversedBy="theaters")
+     */
+    private $screenSize;
+
+    /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Showing", mappedBy="theater")
+     */
+    private $showings;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
 
-	/**
-	 * Get id
-	 *
-	 * @return int
-	 */
-	public function getId() {
-		return $this->id;
-	}
+    /**
+     * Set theaterType
+     *
+     * @param integer $theaterType
+     *
+     * @return Theater
+     */
+    public function setTheaterType($theaterType)
+    {
+        $this->theaterType = $theaterType;
 
+        return $this;
+    }
 
-	/**
-	 * Set theaterType
-	 *
-	 * @param integer $theaterType
-	 *
-	 * @return Theater
-	 */
-	public function setTheaterType( $theaterType ) {
-		$this->theaterType = $theaterType;
+    /**
+     * Get theaterType
+     *
+     * @return TheaterType
+     */
+    public function getTheaterType()
+    {
+        return $this->theaterType;
+    }
 
-		return $this;
-	}
+    /**
+     * Set location
+     *
+     * @param integer $location
+     *
+     * @return Theater
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
 
-	/**
-	 * Get theaterType
-	 *
-	 * @return int
-	 */
-	public function getTheaterType() {
-		return $this->theaterType;
-	}
+        return $this;
+    }
 
-	/**
-	 * Set location
-	 *
-	 * @param integer $location
-	 *
-	 * @return Theater
-	 */
-	public function setLocation( $location ) {
-		$this->location = $location;
+    /**
+     * Get location
+     *
+     * @return Location
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
 
-		return $this;
-	}
+    /**
+     * @return ScreenSize
+     */
+    public function getScreenSize(): ScreenSize
+    {
+        return $this->screenSize;
+    }
 
-	/**
-	 * Get location
-	 *
-	 * @return int
-	 */
-	public function getLocation() {
-		return $this->location;
-	}
-	
+    /**
+     * @param ScreenSize $screenSize
+     *
+     * @return Theater
+     */
+    public function setScreenSize(ScreenSize $screenSize): Theater
+    {
+        $this->screenSize = $screenSize;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getShowings(): array
+    {
+        return $this->showings;
+    }
+
+    /**
+     * @param array $showings
+     *
+     * @return Theater
+     */
+    public function setShowings(array $showings): Theater
+    {
+        $this->showings = $showings;
+
+        return $this;
+    }
+
+    
 }
 

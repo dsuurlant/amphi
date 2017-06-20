@@ -30,6 +30,13 @@ class SoundFormat
 
 
     /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Theater", mappedBy="soundFormat")
+     */
+    private $theaters;
+
+    /**
      * Get id
      *
      * @return int
@@ -62,5 +69,23 @@ class SoundFormat
     {
         return $this->name;
     }
+
+    /**
+     * @return array
+     */
+    public function getTheaters(): array
+    {
+        return $this->theaters;
+    }
+
+    /**
+     * @param array $theaters
+     */
+    public function setTheaters(array $theaters)
+    {
+        $this->theaters = $theaters;
+    }
+
+
 }
 

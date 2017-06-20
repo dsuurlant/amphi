@@ -29,19 +29,25 @@ class Showing
     private $showDateTime;
 
     /**
-     * @var int
+     * @var Theater
      *
-     * @ORM\Column(name="theatre", type="integer")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Theater", inversedBy="showings")
      */
-    private $theatre;
+    private $theater;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="media", type="integer")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Movie", inversedBy="showings")
      */
-    private $media;
+    private $movie;
 
+    /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ticket", mappedBy="showing")
+     */
+    private $tickets;
 
     /**
      * Get id
@@ -78,51 +84,73 @@ class Showing
     }
 
     /**
-     * Set theatre
+     * Set Theater
      *
-     * @param integer $theatre
+     * @param integer $theater
      *
      * @return Showing
      */
-    public function setTheatre($theatre)
+    public function setTheater($theater)
     {
-        $this->theatre = $theatre;
+        $this->theater = $theater;
 
         return $this;
     }
 
     /**
-     * Get theatre
+     * Get theater
      *
-     * @return int
+     * @return Theater
      */
-    public function getTheatre()
+    public function getTheater()
     {
-        return $this->theatre;
+        return $this->theater;
     }
 
     /**
-     * Set media
+     * Set movie
      *
-     * @param integer $media
+     * @param integer $movie
      *
      * @return Showing
      */
-    public function setMedia($media)
+    public function setMovie($movie)
     {
-        $this->media = $media;
+        $this->movie = $movie;
 
         return $this;
     }
 
     /**
-     * Get media
+     * Get movie
      *
      * @return int
      */
-    public function getMedia()
+    public function getMovie()
     {
-        return $this->media;
+        return $this->movie;
     }
+
+    /**
+     * @return array
+     */
+    public function getTickets(): array
+    {
+        return $this->tickets;
+    }
+
+    /**
+     * @param array $tickets
+     *
+     * @return Showing
+     */
+    public function setTickets(array $tickets): Showing
+    {
+        $this->tickets = $tickets;
+
+        return $this;
+    }
+
+
 }
 

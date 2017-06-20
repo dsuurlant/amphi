@@ -28,6 +28,13 @@ class SeatType
      */
     private $name;
 
+    /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Seat", mappedBy="seatType")
+     */
+    private $seats;
+
 
     /**
      * Get id
@@ -62,5 +69,27 @@ class SeatType
     {
         return $this->name;
     }
+
+    /**
+     * @return array
+     */
+    public function getSeats(): array
+    {
+        return $this->seats;
+    }
+
+    /**
+     * @param array $seats
+     *
+     * @return SeatType
+     */
+    public function setSeats(array $seats): SeatType
+    {
+        $this->seats = $seats;
+
+        return $this;
+    }
+    
+
 }
 

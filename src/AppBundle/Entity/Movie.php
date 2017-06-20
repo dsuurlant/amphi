@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Media
+ * Movie
  *
- * @ORM\Table(name="media")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\MediaRepository")
+ * @ORM\Table(name="movie")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\MovieRepository")
  */
-class Media
+class Movie
 {
     /**
      * @var int
@@ -28,13 +28,12 @@ class Media
      */
     private $name;
 
-	/**
-	 * @var int
-	 *
-	 * @ORM\Column(name="mediaType", type="integer")
-	 */
-	private $metadataType;
-
+    /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Showing", mappedBy="movies")
+     */
+    private $showings;
 
     /**
      * Get id
@@ -51,7 +50,7 @@ class Media
      *
      * @param string $name
      *
-     * @return Media
+     * @return Movie
      */
     public function setName($name)
     {
@@ -69,5 +68,27 @@ class Media
     {
         return $this->name;
     }
+
+    /**
+     * @return array
+     */
+    public function getShowings(): array
+    {
+        return $this->showings;
+    }
+
+    /**
+     * @param array $showings
+     *
+     * @return Movie
+     */
+    public function setShowings(array $showings): Movie
+    {
+        $this->showings = $showings;
+
+        return $this;
+    }
+
+    
 }
 
