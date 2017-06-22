@@ -1,0 +1,9 @@
+AppBundle\Entity\SeatType:
+    seat_type_1:
+        name:  "Normal Seat"
+
+    seat_type_2:
+        name: "Love Seat"
+
+    seat_type_3:
+        name: "Comfort Seat"

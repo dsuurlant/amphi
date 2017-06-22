@@ -1,0 +1,45 @@
+AppBundle\Entity\MetadataType:
+    metadata_type_1:
+        name: "title"
+
+    metadata_type_2:
+        name: "year"
+
+    metadata_type_3:
+        name: "rated"
+
+    metadata_type_4:
+        name: "released"
+
+    metadata_type_5:
+        name: "runtime"
+
+    metadata_type_6:
+        name: "genres"
+
+    metadata_type_7:
+        name: "director"
+
+    metadata_type_8:
+        name: "writer"
+
+    metadata_type_9:
+        name: "actors"
+
+    metadata_type_10:
+        name: "plot"
+
+    metadata_type_11:
+        name: "languages"
+
+    metadata_type_12:
+        name: "country"
+
+    metadata_type_13:
+        name: "awards"
+
+    metadata_type_14:
+        name: "poster"
+
+    metadata_type_15:
+        name: "banner"

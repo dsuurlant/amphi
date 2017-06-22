@@ -1,0 +1,6 @@
+AppBundle\Entity\SoundFormat:
+    sound_format_1:
+        name: "Dolby Digital 7.1"
+
+    sound_format_2:
+        name: "IMAX Sound"

@@ -1,0 +1,12 @@
+AppBundle\Entity\FilmFormat:
+    film_format_1:
+        name: "IMAX 3D"
+
+    film_format_2:
+        name: "Laser 3D"
+
+    film_format_3:
+        name: "Digital 3D"
+
+    film_format_5:
+        name: "Digital 2D"

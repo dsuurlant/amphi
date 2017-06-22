@@ -22,9 +22,9 @@ class Metadata
     private $id;
 
     /**
-     * @var int
+     * @var Movie
      *
-     * @ORM\Column(name="movie", type="integer")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Movie", inversedBy="metadatas")
      */
     private $movie;
 
@@ -42,7 +42,6 @@ class Metadata
      */
     private $value;
 
-
     /**
      * Get id
      *
@@ -56,7 +55,7 @@ class Metadata
     /**
      * Set movie
      *
-     * @param integer $movie
+     * @param Movie $movie
      *
      * @return Metadata
      */
@@ -70,7 +69,7 @@ class Metadata
     /**
      * Get movie
      *
-     * @return int
+     * @return Movie
      */
     public function getMovie()
     {

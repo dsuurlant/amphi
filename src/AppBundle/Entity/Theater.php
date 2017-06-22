@@ -36,13 +36,6 @@ class Theater
     private $location;
 
     /**
-     * @var ScreenSize
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ScreenSize", inversedBy="theaters")
-     */
-    private $screenSize;
-
-    /**
      * @var array
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Showing", mappedBy="theater")
@@ -109,26 +102,6 @@ class Theater
     }
 
     /**
-     * @return ScreenSize
-     */
-    public function getScreenSize(): ScreenSize
-    {
-        return $this->screenSize;
-    }
-
-    /**
-     * @param ScreenSize $screenSize
-     *
-     * @return Theater
-     */
-    public function setScreenSize(ScreenSize $screenSize): Theater
-    {
-        $this->screenSize = $screenSize;
-
-        return $this;
-    }
-
-    /**
      * @return array
      */
     public function getShowings(): array
@@ -148,6 +121,6 @@ class Theater
         return $this;
     }
 
-    
+
 }
 

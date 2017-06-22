@@ -1,0 +1,63 @@
+AppBundle\Entity\TheaterType:
+    theater_type_1:
+        name: "Mega IMAX 3D"
+        total_seats: 360 #24x15
+        rows: 15
+        seats_per_row: 24
+        film_format: '@film_format_1'
+        sound_format: '@sound_format_2'
+        screen_size: '@screen_size_1'
+
+    theater_type_2:
+        name: "Super Laser 3D"
+        total_seats: 322 #23x14
+        rows: 14
+        seats_per_row: 23
+        film_format: '@film_format_2'
+        sound_format: '@sound_format_1'
+        screen_size: '@screen_size_2'
+
+    theater_type_3:
+        name: "Large 3D"
+        total_seats: 220 #20x11
+        rows: 11
+        seats_per_row: 20
+        film_format: '@film_format_3'
+        sound_format: '@sound_format_1'
+        screen_size: '@screen_size_3'
+
+    theater_type_4:
+        name: "Standard 3D"
+        total_seats: 198 #18x11
+        rows: 11
+        seats_per_row: 18
+        film_format: '@film_format_3'
+        sound_format: '@sound_format_1'
+        screen_size: '@screen_size_4'
+
+    theater_type_5:
+        name: "Standard 2D"
+        total_seats: 198 #18x11
+        rows: 11
+        seats_per_row: 18
+        film_format: '@film_format_5'
+        sound_format: '@sound_format_1'
+        screen_size: '@screen_size_4'
+
+    theater_type_6:
+        name: "Small 3D"
+        total_seats: 112 #14x8
+        rows: 8
+        seats_per_row: 14
+        film_format: '@film_format_3'
+        sound_format: '@sound_format_1'
+        screen_size: '@screen_size_5'
+
+    theater_type_7:
+        name: "Small 2D"
+        total_seats: 112 #14x8
+        rows: 8
+        seats_per_row: 14
+        film_format: '@film_format_5'
+        sound_format: '@sound_format_1'
+        screen_size: '@screen_size_5'

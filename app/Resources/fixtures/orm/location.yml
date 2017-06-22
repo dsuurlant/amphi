@@ -1,0 +1,36 @@
+AppBundle\Entity\Location:
+    location_1:
+        name: "Pathé de Kuip"
+        description: "Pathé de Kuip is een groot bioscoopcomplex met 2745 stoelen gelegen vlak naast het Feyenoord-stadium."
+        address_line_one: "Cor Kieboomplein 501"
+        address_line_two: ""
+        postal_code: "3077MK"
+        city: "Rotterdam"
+        country: "NLD"
+        phone_number: ""
+        email: ""
+        website: "https://www.pathe.nl/bioscoop/dekuip"
+
+    location_2:
+        name: "Pathé Schouwburgplein"
+        description: "Pathé Schouwburgplein is een middelgrote bioscoop met 2405 stoelen en ligt een steenworp van Rotterdam Centraal."
+        address_line_one: "Schouwburgplein 101"
+        address_line_two: ""
+        postal_code: "3012CL"
+        city: "Rotterdam"
+        country: "NLD"
+        phone_number: ""
+        email: ""
+        website: "https://www.pathe.nl/bioscoop/schouwburgplein"
+
+    location_3:
+        name: "Pathé Delft"
+        description: ""
+        address_line_one: "Vesteplein 5"
+        address_line_two: ""
+        postal_code: "2611WG"
+        city: "Delft"
+        country: "NLD"
+        phone_number: ""
+        email: ""
+        website: "https://www.pathe.nl/bioscoop/delft"

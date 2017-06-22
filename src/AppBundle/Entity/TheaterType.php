@@ -29,18 +29,32 @@ class TheaterType
     private $name;
 
     /**
-     * @var int
+     * @var FilmFormat
      *
-     * @ORM\Column(name="filmFormat", type="integer")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\FilmFormat", inversedBy="theaters")
      */
     private $filmFormat;
 
     /**
-     * @var int
+     * @var SoundFormat
      *
-     * @ORM\Column(name="soundFormat", type="integer")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\SoundFormat", inversedBy="theaters")
      */
     private $soundFormat;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="rows", type="integer")
+     */
+    private $rows;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="seatsPerRow", type="integer")
+     */
+    private $seatsPerRow;
 
     /**
      * @var int
@@ -50,9 +64,9 @@ class TheaterType
     private $totalSeats;
 
     /**
-     * @var int
+     * @var ScreenSize
      *
-     * @ORM\Column(name="screenSize", type="integer")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ScreenSize", inversedBy="theaters")
      */
     private $screenSize;
 
@@ -162,7 +176,7 @@ class TheaterType
     {
         return $this->totalSeats;
     }
-    
+
     /**
      * @return int
      */

@@ -1,0 +1,15 @@
+AppBundle\Entity\ScreenSize:
+    screen_size_1:
+        name: "Mega"
+
+    screen_size_2:
+        name: "Super"
+
+    screen_size_3:
+        name: "Large"
+
+    screen_size_4:
+        name: "Standard"
+
+    screen_size_5:
+        name: "Small"
