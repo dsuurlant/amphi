@@ -38,7 +38,8 @@ monolog:
         #    level: info
 
 hautelook_alice:
-    fixtures_path: 'Resources/Fixtures/ORM' # Path to which to look for fixtures relative to the project directory or the bundle path.
+    fixtures_path: 'Resources/fixtures/orm'
+
 
 #swiftmailer:
 #    delivery_addresses: ['me@example.com']

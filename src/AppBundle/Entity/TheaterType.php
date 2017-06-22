@@ -177,20 +177,61 @@ class TheaterType
         return $this->totalSeats;
     }
 
+
     /**
      * @return int
      */
-    public function getScreenSize(): int
+    public function getRows(): int
+    {
+        return $this->rows;
+    }
+
+    /**
+     * @param int $rows
+     *
+     * @return TheaterType
+     */
+    public function setRows(int $rows): TheaterType
+    {
+        $this->rows = $rows;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSeatsPerRow(): int
+    {
+        return $this->seatsPerRow;
+    }
+
+    /**
+     * @param int $seatsPerRow
+     *
+     * @return TheaterType
+     */
+    public function setSeatsPerRow(int $seatsPerRow): TheaterType
+    {
+        $this->seatsPerRow = $seatsPerRow;
+
+        return $this;
+    }
+
+    /**
+     * @return ScreenSize
+     */
+    public function getScreenSize(): ScreenSize
     {
         return $this->screenSize;
     }
 
     /**
-     * @param int $screenSize
+     * @param ScreenSize $screenSize
      *
      * @return TheaterType
      */
-    public function setScreenSize(int $screenSize): TheaterType
+    public function setScreenSize(ScreenSize $screenSize): TheaterType
     {
         $this->screenSize = $screenSize;
 

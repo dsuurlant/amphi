@@ -2,11 +2,11 @@ AppBundle\Entity\Movie:
     movie_1:
         name: "Wonder Woman"
 
-    movie_3:
-        name: "All Eyez On Me"
+    movie_2:
+        name: "King Arthur: Legend of the Sword"
 
-    movie_4:
+    movie_3:
         name: "Guardians of the Galaxy Vol. 2"
 
-    movie_5:
+    movie_4:
         name: "Baywatch"

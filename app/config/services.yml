@@ -29,7 +29,7 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
-    # add more services, or override services that need manual wiring
-    # AppBundle\Service\ExampleService:
-    #     arguments:
-    #         $someArgument: 'some_value'
+    # Alice data fixtures
+    data_fixutres.provider.get_future_date:
+        class: AppBundle\DataFixtures\Faker\Provider\CustomProvider
+        tags: [ { name: nelmio_alice.faker.provider }]

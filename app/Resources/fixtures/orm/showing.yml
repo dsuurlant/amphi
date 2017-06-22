@@ -1,7 +1,0 @@
-AppBundle\Entity\Showing:
-    showing_1:
-        theater: '@theater_1'
-        movie:  '@movie_1'
-        show_date_time: <DateTime('Y-m-d')>
-
-        # @TODO use a custom provider to get showings for tomorrow and day after at specified time.

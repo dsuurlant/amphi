@@ -17,7 +17,7 @@ AppBundle\Entity\Theater:
         theater_type: '@theater_type_3'
         location: '@location_2'
 
-    theater_{11..16}:
+    theater_{12..16}:
         theater_type: '@theater_type_4'
         location: '@location_2'
 
