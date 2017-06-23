@@ -10,4 +10,30 @@ namespace AppBundle\Repository;
  */
 class ShowingRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param \DateTime $startDate The start date.
+     * @param \DateTime $endDate The end date.
+     *
+     * @return array List of showings between specified dates.
+     */
+    public function getShowingsBetween(\DateTime $startDate, \DateTime $endDate)
+    {
+        $em = $this->getEntityManager();
+        $qb = $em->createQueryBuilder()
+                 ->select('s')
+                 ->from('AppBundle:Showing', 's')
+                 ->where('s.showDateTime >= :startDate')
+                 ->andWhere('s.showDateTime <= :endDate')
+                 ->orderBy('s.showDateTime', 'ASC')
+                 ->setParameter('startDate', $startDate)
+                 ->setParameter('endDate', $endDate)
+                 ->setFirstResult(0)
+                 ->setMaxResults(25); // @TODO pagination
+
+        $q = $qb->getQuery();
+
+        $results = $q->getResult();
+
+        return $results;
+    }
 }

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Showing
@@ -15,6 +16,7 @@ class Showing
     /**
      * @var int
      *
+     * @Serializer\Exclude()
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -30,13 +32,14 @@ class Showing
 
     /**
      * @var Theater
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Theater", inversedBy="showings")
+     * @Serializer\Exclude()
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Theater", inversedBy="showings")     *
      */
     private $theater;
 
     /**
-     * @var int
+     * @var Movie
+     * @Serializer\Exclude()
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Movie", inversedBy="showings")
      */
@@ -44,10 +47,38 @@ class Showing
 
     /**
      * @var array
+     * @Serializer\Exclude()
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ticket", mappedBy="showing")
      */
     private $tickets;
+
+    /**
+     * @Serializer\VirtualProperty()
+     * @Serializer\SerializedName("location")
+     */
+    public function location()
+    {
+        return $this->getTheater()->getLocation()->getName();
+    }
+
+    /**
+     * @Serializer\VirtualProperty()
+     * @Serializer\SerializedName("movie")
+     */
+    public function movie()
+    {
+        return $this->getMovie()->getName();
+    }
+
+    /**
+     * @Serializer\VirtualProperty()
+     * @Serializer\SerializedName("type")
+     */
+    public function type()
+    {
+        return $this->getTheater()->getTheaterType()->getFilmFormat()->getName();
+    }
 
     /**
      * Get id
