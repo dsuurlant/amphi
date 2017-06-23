@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Movie
@@ -31,6 +32,7 @@ class Movie
     /**
      * @var array
      *
+     * @Serializer\Exclude();
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Showing", mappedBy="movies")
      */
     private $showings;
@@ -89,6 +91,6 @@ class Movie
         return $this;
     }
 
-    
+
 }
 

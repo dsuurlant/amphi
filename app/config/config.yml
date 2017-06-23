@@ -77,6 +77,9 @@ nelmio_cors:
         hosts: []
         origin_regex: false
 
+# Nelmio API Doc configuration
+nelmio_api_doc: ~
+
 # FOSRest Configuration
 fos_rest:
     body_listener: true

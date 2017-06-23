@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Showing;
 use JMS\Serializer\Serializer;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -15,6 +16,15 @@ use FOS\RestBundle\View\View;
 class ShowingController extends FOSRestController
 {
     /**
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Create a new showing.",
+     *  parameters={
+     *      {"name"="show_date_time", "dataType"="string", "required"=true, "description"="valid datetime string"},
+     *      {"name"="theater_id", "dataType"="int", "required"=true, "description"="theater id"},
+     *      {"name"="movie_id", "dataType"="int", "required"=true, "description"="movie id"}
+     *  }
+     * )
      * @Rest\Post("/showing/")
      */
     public function postAction(Request $request)
@@ -49,27 +59,37 @@ class ShowingController extends FOSRestController
             $showing->setMovie($movie);
             $showing->setShowDateTime($showDate); // @TODO date must be in the future, etc
             $showing->setTheater($theater); // @TODO check availability of theater at specified time
-            $showing->setTickets(array()); // @TODO generate tickets
+            $showing->setTickets(array());
 
             $em->persist($showing);
             $em->flush();
 
-            return new View("Showing registered successfully", Response::HTTP_OK);
+            $em->getRepository('AppBundle:Showing')->generateTicketsForShowing($showing);
+            $em->flush();
+
+            return new View($showing, Response::HTTP_OK);
         } catch (\Exception $e) {
             return new View("Showing could not be registered.", Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
     /**
-     * @Rest\Get("/showing/from/{startDateTime}/to/{endDateTime}/")
+     * @ApiDoc(
+     *  description="List showings between specified dates.",
+     *  parameters={
+     *      {"name"="start_date_time", "dataType"="string", "required"=true, "description"="start date as a valid datetime string"},
+     *      {"name"="end_date_time", "dataType"="string", "required"=true, "description"="end date as a valid datetime string"}
+     *  }
+     * )
+     * @Rest\Get("/showing/from/{start_date_time}/to/{end_date_time}/")
      */
-    public function listBetweenAction($startDateTime, $endDateTime)
+    public function listBetweenAction($start_date_time, $end_date_time)
     {
         $startDate = null;
         $endDate   = null;
         try {
-            $startDate = new \DateTime($startDateTime);
-            $endDate   = new \DateTime($endDateTime);
+            $startDate = new \DateTime($start_date_time);
+            $endDate   = new \DateTime($end_date_time);
         } catch (\Exception $e) {
             return new View("Incorrectly formatted date and time.", Response::HTTP_NOT_ACCEPTABLE);
         }
@@ -88,6 +108,12 @@ class ShowingController extends FOSRestController
     }
 
     /**
+     * @ApiDoc(
+     *  description="Get details of specified showing.",
+     *  parameters={
+     *      {"name"="id", "dataType"="integer", "required"=true, "description"="showing id"}
+     *  }
+     * )
      * @Rest\Get("/showing/{id}/")
      */
     public function getAction($id)
