@@ -5,30 +5,6 @@ AppBundle\Entity\Theater:
         theater_type: '@theater_type_1'
         location: '@location_2'
 
-    theater_{2..3}:
+    theater_2:
         theater_type: '@theater_type_2'
         location: '@location_1'
-
-    theater_{4..7}:
-        theater_type: '@theater_type_3'
-        location: '@location_1'
-
-    theater_{8..11}:
-        theater_type: '@theater_type_3'
-        location: '@location_2'
-
-    theater_{12..16}:
-        theater_type: '@theater_type_4'
-        location: '@location_2'
-
-    theater_{17..20}:
-        theater_type: '@theater_type_4'
-        location: '@location_1'
-
-    theater_{21..24}:
-        theater_type: '@theater_type_6'
-        location: '@location_1'
-
-    theater_{25..28}:
-        theater_type: '@theater_type_6'
-        location: '@location_2'

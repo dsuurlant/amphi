@@ -39,42 +39,7 @@ AppBundle\Entity\Showing:
         movie:  '@movie_2'
         show_date_time: <getFutureDate(1, 21, 00, 0)>
 
-    showing_9:
-        theater: '@theater_3'
-        movie:  '@movie_1'
-        show_date_time: <getFutureDate(3, 10, 30, 0)>
-
-    showing_10:
-        theater: '@theater_20'
-        movie:  '@movie_3'
-        show_date_time: <getFutureDate(1, 14, 25, 0)>
-
-    showing_11:
-        theater: '@theater_6'
-        movie:  '@movie_4'
-        show_date_time: <getFutureDate(2, 17, 30, 0)>
-
-    showing_12:
-        theater: '@theater_11'
-        movie:  '@movie_1'
-        show_date_time: <getFutureDate(1, 21, 00, 0)>
-
-    showing_9:
-        theater: '@theater_24'
+    showing_13:
+        theater: '@theater_2'
         movie:  '@movie_3'
         show_date_time: <getFutureDate(3, 10, 30, 0)>
-
-    showing_10:
-        theater: '@theater_27'
-        movie:  '@movie_1'
-        show_date_time: <getFutureDate(1, 14, 25, 0)>
-
-    showing_11:
-        theater: '@theater_15'
-        movie:  '@movie_3'
-        show_date_time: <getFutureDate(2, 17, 30, 0)>
-
-    showing_12:
-        theater: '@theater_7'
-        movie:  '@movie_4'
-        show_date_time: <getFutureDate(1, 21, 00, 0)>

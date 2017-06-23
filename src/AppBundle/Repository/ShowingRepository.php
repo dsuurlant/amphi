@@ -11,6 +11,8 @@ namespace AppBundle\Repository;
 class ShowingRepository extends \Doctrine\ORM\EntityRepository
 {
     /**
+     * Get showings in specified timeframe.
+     *
      * @param \DateTime $startDate The start date.
      * @param \DateTime $endDate The end date.
      *
@@ -32,8 +34,28 @@ class ShowingRepository extends \Doctrine\ORM\EntityRepository
 
         $q = $qb->getQuery();
 
-        $results = $q->getResult();
+        return $q->getResult();
+    }
 
-        return $results;
+    /**
+     * Get future showings.
+     *
+     * @return array
+     */
+    public function getFutureShowings()
+    {
+        $now = new \DateTime('now');
+
+        $em = $this->getEntityManager();
+        $qb = $em->createQueryBuilder()
+                 ->select('s')
+                 ->from('AppBundle:Showing', 's')
+                 ->where('s.showDateTime > :now')
+                 ->orderBy('s.showDateTime', 'ASC')
+                 ->setParameter('now', $now);
+
+        $q = $qb->getQuery();
+
+        return $q->getResult();
     }
 }

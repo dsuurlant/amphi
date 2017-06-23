@@ -1,9 +1,0 @@
-AppBundle\Entity\Seat:
-    # related to: theater
-    # related to: seat type
-    seat_{1..24}:
-        theater: '@theater_1'
-        seat_type: '@seat_type_1'
-        row: 1
-        chair: <current()>
-

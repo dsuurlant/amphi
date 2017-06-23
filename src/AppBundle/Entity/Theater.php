@@ -43,6 +43,13 @@ class Theater
     private $showings;
 
     /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Seat", mappedBy="theater")
+     */
+    private $seats;
+
+    /**
      * Get id
      *
      * @return int
@@ -104,7 +111,7 @@ class Theater
     /**
      * @return array
      */
-    public function getShowings(): array
+    public function getShowings()
     {
         return $this->showings;
     }
@@ -114,13 +121,32 @@ class Theater
      *
      * @return Theater
      */
-    public function setShowings(array $showings): Theater
+    public function setShowings($showings)
     {
         $this->showings = $showings;
 
         return $this;
     }
 
+    /**
+     * @return array
+     */
+    public function getSeats()
+    {
+        return $this->seats;
+    }
+
+    /**
+     * @param array $seats
+     *
+     * @return Theater
+     */
+    public function setSeats($seats)
+    {
+        $this->seats = $seats;
+
+        return $this;
+    }
 
 }
 

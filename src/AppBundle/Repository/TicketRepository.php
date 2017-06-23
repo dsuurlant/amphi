@@ -2,6 +2,9 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Seat;
+use AppBundle\Entity\Theater;
+
 /**
  * TicketRepository
  *
@@ -10,4 +13,26 @@ namespace AppBundle\Repository;
  */
 class TicketRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function removeTicketsFromSeats($seatIds)
+    {
+        $em = $this->getEntityManager();
+        $qb = $em->createQueryBuilder()
+                 ->delete('AppBundle:Ticket', 't')
+                 ->where('t.seat IN (:seats)')
+                 ->setParameter('seats', implode(',', $seatIds));
+
+        $q = $qb->getQuery();
+        $q->execute();
+    }
+
+    public function flushTickets()
+    {
+        $em = $this->getEntityManager();
+        $qb = $em->createQueryBuilder()
+                 ->delete('AppBundle:Ticket', 't')
+                 ->where('t.isPaid = FALSE');
+
+        $q = $qb->getQuery();
+        $q->execute();
+    }
 }

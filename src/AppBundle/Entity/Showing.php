@@ -16,7 +16,6 @@ class Showing
     /**
      * @var int
      *
-     * @Serializer\Exclude()
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -165,7 +164,7 @@ class Showing
     /**
      * @return array
      */
-    public function getTickets(): array
+    public function getTickets()
     {
         return $this->tickets;
     }
@@ -175,7 +174,7 @@ class Showing
      *
      * @return Showing
      */
-    public function setTickets(array $tickets): Showing
+    public function setTickets($tickets)
     {
         $this->tickets = $tickets;
 

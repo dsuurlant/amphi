@@ -10,4 +10,14 @@ namespace AppBundle\Repository;
  */
 class PriceRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getPriceFor($name)
+    {
+        $price = $this->findOneBy(array('name' => $name));
+
+        if (empty($price)) {
+            return 0.00;
+        }
+
+        return $price->getAmount();
+    }
 }

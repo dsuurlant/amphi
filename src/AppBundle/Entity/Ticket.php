@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Ticket
@@ -22,21 +23,23 @@ class Ticket
     private $id;
 
     /**
-     * @var int
+     * @var Showing
      *
-     * @ORM\Column(name="showing", type="integer")
+     * @Serializer\Exclude()
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Showing", inversedBy="tickets")
      */
     private $showing;
 
     /**
-     * @var int
+     * @var Seat
      *
-     * @ORM\Column(name="seat", type="integer")
+     * @Serializer\Exclude()
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Seat", inversedBy="tickets");
      */
     private $seat;
 
     /**
-     * @var bool
+     * @var boolean
      *
      * @ORM\Column(name="isReserved", type="boolean")
      */
@@ -44,11 +47,36 @@ class Ticket
 
 
     /**
-     * @var bool
+     * @var boolean
      *
      * @ORM\Column(name="isPaid", type="boolean")
      */
     private $isPaid;
+
+    /**
+     * @var float;
+     *
+     * @ORM\Column(name="price", type="decimal", precision=10, scale=2)
+     */
+    private $price;
+
+    /**
+     * @Serializer\VirtualProperty()
+     * @Serializer\SerializedName("row")
+     */
+    public function row()
+    {
+        return $this->getSeat()->getRow();
+    }
+
+    /**
+     * @Serializer\VirtualProperty()
+     * @Serializer\SerializedName("chair")
+     */
+    public function chair()
+    {
+        return $this->getSeat()->getChair();
+    }
 
     /**
      * Get id
@@ -63,7 +91,7 @@ class Ticket
     /**
      * Set showing
      *
-     * @param integer $showing
+     * @param Showing $showing
      *
      * @return Ticket
      */
@@ -77,7 +105,7 @@ class Ticket
     /**
      * Get showing
      *
-     * @return int
+     * @return Showing
      */
     public function getShowing()
     {
@@ -87,7 +115,7 @@ class Ticket
     /**
      * Set seat
      *
-     * @param integer $seat
+     * @param Seat $seat
      *
      * @return Ticket
      */
@@ -101,35 +129,11 @@ class Ticket
     /**
      * Get seat
      *
-     * @return int
+     * @return Seat
      */
     public function getSeat()
     {
         return $this->seat;
-    }
-
-    /**
-     * Set user
-     *
-     * @param integer $user
-     *
-     * @return Ticket
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return int
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 
     /**
@@ -156,26 +160,44 @@ class Ticket
         return $this->isReserved;
     }
 
-
     /**
-     * @param bool $isPaid
+     * @param boolean $isPaid
      *
      * @return Ticket
      */
-    public function setIsPaid(bool $isPaid)
+    public function setIsPaid($isPaid)
     {
         $this->isPaid = $isPaid;
 
         return $this;
     }
 
-
     /**
-     * @return bool
+     * @return boolean
      */
-    public function isPaid(): bool
+    public function isPaid()
     {
         return $this->isPaid;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param float $price
+     *
+     * @return Ticket
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
     }
 
 }

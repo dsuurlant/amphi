@@ -49,6 +49,12 @@ class Seat
      */
     private $chair;
 
+    /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ticket", mappedBy="seat")
+     */
+    private $tickets;
 
     /**
      * Get id

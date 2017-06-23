@@ -61,7 +61,7 @@ class ShowingController extends FOSRestController
     }
 
     /**
-     * @Rest\Get("/showing/{startDateTime}/{endDateTime}/")
+     * @Rest\Get("/showing/from/{startDateTime}/to/{endDateTime}/")
      */
     public function listBetweenAction($startDateTime, $endDateTime)
     {
@@ -86,4 +86,20 @@ class ShowingController extends FOSRestController
             return new View("Unable to search for showings.", Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+
+    /**
+     * @Rest\Get("/showing/{id}/")
+     */
+    public function getAction($id)
+    {
+        $em      = $this->getDoctrine()->getManager();
+        $showing = $em->find('AppBundle:Showing', $id);
+
+        if (empty($showing)) {
+            return new View('No showing found with specified identifier.', Response::HTTP_NOT_FOUND);
+        }
+
+        return new View($showing);
+    }
+
 }

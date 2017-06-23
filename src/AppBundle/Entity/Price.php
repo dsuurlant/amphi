@@ -29,7 +29,7 @@ class Price
     private $name;
 
     /**
-     * @var string
+     * @var float
      *
      * @ORM\Column(name="amount", type="decimal", precision=10, scale=2)
      */
@@ -73,7 +73,7 @@ class Price
     /**
      * Set amount
      *
-     * @param string $amount
+     * @param float $amount
      *
      * @return Price
      */
@@ -85,9 +85,9 @@ class Price
     }
 
     /**
-     * Get amount
+     * Get float
      *
-     * @return string
+     * @return float
      */
     public function getAmount()
     {
